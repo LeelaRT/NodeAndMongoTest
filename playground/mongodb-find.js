@@ -14,8 +14,19 @@ MongoClient.connect(
                         //       (err) => { console.log('Unable to fetch todos',err);  }
                         //  );
 
+                        db.collection('Users').find().count().then(
+                          (count) => {
+                            console.log(`Users count: ${count}`);
+                          },
+                          (err) => {
+                            console.log('Unable to fetch Users',err);
+                          }
+                        );
+
                          db.collection('Users').find({EmployeeName: 'Leela RT'}).toArray().then(
                            (docs) => {
+                             console.log('\nEmployees:');
+                             console.log('==========================================');
                                       console.log(JSON.stringify(docs,undefined,2));
                                       },
                            (err) => {
